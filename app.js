@@ -18,6 +18,9 @@ app.use(cors({
 }))
 app.use(cookieParser());
 app.use(express.json());//Using middleware to send json data in response
+app.get('/', (req, res) => {
+    res.send('Nicely Working')
+})
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/tasks', taskRouter);
 

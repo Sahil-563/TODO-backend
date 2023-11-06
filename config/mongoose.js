@@ -5,6 +5,6 @@ export const db = ()=>{
     mongoose.connect(process.env.MONGO_URI,{
         dbname:'TODO_db',
     })
-    .then(()=>console.log('DataBase Connected'))
+    .then((c)=>console.log(`DataBase Connected with ${c.connection.host}`))
     .catch((err)=>console.log(err));
 }
