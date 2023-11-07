@@ -22,10 +22,10 @@ export const newUserRegister = async (req, res) => {
         const hashedpasword = await bcrypt.hash(password,10);
         user = await User.create({name:name,email:email,password:hashedpasword});
         console.log("User is created with name", user.name);
-        setcookie(user,'cookie is set successfully while registering',200,res);
+        setcookie(user,'Registered Successfully',200,res);
     }
     catch(err){
-        console.log('Error in creating User', err)
+        console.log('Registrtion failed!', err)
     }
 }
 
@@ -50,7 +50,7 @@ export const login = async (req, res,next) => {
         });
     }
     else{
-        setcookie(user,`cookie is set successfully while loging and user is logedin with name ${user.name}`,200,res);
+        setcookie(user,`${user.name} logined successfully`,200,res);
     }
 
 }
