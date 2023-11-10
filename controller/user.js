@@ -58,7 +58,7 @@ export const login = async (req, res,next) => {
 export const logout = (req, res) => { 
     res.status(200).cookie('token',null,{
         httpOnly:true,
-        expires:new Date(Date.now()-1000)
+        expires:new Date(Date.now())
     }).json({
         sameSite:process.env.NODE_ENV === "Development" ?"lax":"none",
         secure:process.env.NODE_ENV ==="Development" ?false:true,
