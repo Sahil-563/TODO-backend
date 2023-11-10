@@ -60,7 +60,8 @@ export const logout = (req, res) => {
         httpOnly:true,
         expires:new Date(Date.now()-1000)
     }).json({
-        
+        sameSite:process.env.NODE_ENV === "Development" ?"lax":"none",
+        secure:process.env.NODE_ENV ==="Development" ?false:true,
         success:true,
         message:`User logged out successfully`,
     })
