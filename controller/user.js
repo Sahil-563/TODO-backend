@@ -56,13 +56,7 @@ export const login = async (req, res,next) => {
 }
 //Logout route controller function
 export const logout = (req, res) => { 
-    res.clearCookie('token');
-    res.status(200).json({
-        sameSite:process.env.NODE_ENV === "Development" ?"lax":"none",
-        secure:process.env.NODE_ENV ==="Development" ?false:true,
-        success:true,
-        message:`User logged out successfully`,
-    })
+    res.status(200).cookie("token","",{ expires:new Date(Date.now())}).json({success:true,user:req.user});
    
 }
 export const getUserDetails = async (req,res) => {
