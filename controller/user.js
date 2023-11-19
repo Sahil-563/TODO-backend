@@ -3,6 +3,7 @@ import {User} from '../models/userSchema.js'
 import bcrypt from 'bcrypt';
 import { setcookie } from '../utils/features.js';
 //Controller function to get all users
+
 export const getAllUsers=async (req, res) => {
     
 }
@@ -55,8 +56,18 @@ export const login = async (req, res,next) => {
 
 }
 //Logout route controller function
+// export const logout = (req, res) => { 
+//     res.status(200).
+    
+//     cookie("token","",{httpOnly: true, expires:new Date(Date.now())})
+//     .json({success:true,'message':'Logged Out'});
+   
+// }
 export const logout = (req, res) => { 
-    res.status(200).cookie("token","",{ expires:new Date(Date.now())}).json({success:true,'message':'Logged Out'});
+    res.status(200).
+    
+    cookie("token","",{httpOnly: true, expires:new Date(Date.now()),sameSite: 'None',secure: true})
+    .json({success:true,'message':'Logged Out'});
    
 }
 export const getUserDetails = async (req,res) => {
