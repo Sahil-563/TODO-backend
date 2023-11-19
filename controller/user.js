@@ -22,7 +22,6 @@ export const newUserRegister = async (req, res) => {
     try{
         const hashedpasword = await bcrypt.hash(password,10);
         user = await User.create({name:name,email:email,password:hashedpasword});
-        console.log("User is created with name", user.name);
         setcookie(user,'Registered Successfully',200,res);
     }
     catch(err){
@@ -56,13 +55,7 @@ export const login = async (req, res,next) => {
 
 }
 //Logout route controller function
-// export const logout = (req, res) => { 
-//     res.status(200).
-    
-//     cookie("token","",{httpOnly: true, expires:new Date(Date.now())})
-//     .json({success:true,'message':'Logged Out'});
-   
-// }
+
 export const logout = (req, res) => { 
     res.status(200).
     
@@ -73,7 +66,7 @@ export const logout = (req, res) => {
 export const getUserDetails = async (req,res) => {
     res.status(200).json({
         success:true,
-        
+        user: req.user
     });
 }
 
