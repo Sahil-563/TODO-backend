@@ -56,13 +56,13 @@ export const login = async (req, res,next) => {
 }
 //Logout route controller function
 export const logout = (req, res) => { 
-    res.status(200).cookie("token","",{ expires:new Date(Date.now())}).json({success:true,user:req.user});
+    res.status(200).cookie("token","",{ expires:new Date(Date.now())}).json({success:true,'message':'Logged Out'});
    
 }
 export const getUserDetails = async (req,res) => {
     res.status(200).json({
         success:true,
-        user:req.user,       
+        
     });
 }
 
